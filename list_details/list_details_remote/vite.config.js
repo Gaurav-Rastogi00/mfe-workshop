@@ -7,11 +7,10 @@ export default defineConfig({
   plugins: [
     vue(),
     federation({
-      name: "host-shell",
-      remotes: {
-        form: "http://localhost:4174/assets/remoteEntry.js",
-        list: "http://localhost:4173/assets/remoteEntry.js",
-        details: "http://localhost:4175/assets/remoteEntry.js",
+      name: "detail-remote",
+      filename: "remoteEntry.js",
+      exposes: {
+        "./RemoteApp": "./src/components/ItemDetails.vue",
       },
       shared: ["vue"],
     }),
