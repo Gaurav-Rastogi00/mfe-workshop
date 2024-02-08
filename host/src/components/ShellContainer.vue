@@ -3,13 +3,22 @@
     <a href="/list"> Member's List</a>
     <a href="/form"> Add New Member</a>
   </nav> -->
-  <List />
+  <List @list-click="(data:{}) => getData(data)" />
   <Form />
+  <Details :dataItem="details" v-if="details" />
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue";
 import List from "list/RemoteApp";
 import Form from "form/RemoteApp";
+import Details from "details/RemoteApp";
+
+const details = ref();
+
+const getData = (data: {}) => {
+  details.value = data;
+};
 </script>
 
 <style>
