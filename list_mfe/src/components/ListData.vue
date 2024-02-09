@@ -1,10 +1,19 @@
 <template>
   <div>
-    <div v-for="(member, index) in membersList" :key="index" class="member-container">
+    <div
+      v-for="(member, index) in membersList"
+      :key="index"
+      class="member-container"
+    >
       <br-card>
         <div class="card">
-          <router-link to="member.name">
-            <div class="name" @click="$emit('list-click', member)">{{ member.name }}</div>
+          <router-link
+            :memberData="member"
+            :to="{ name: 'Name', params: { id: member.id } }"
+          >
+            <p @click="$emit('list-click', member)">
+              {{ member.name }}
+            </p>
           </router-link>
           <div class="contact">{{ member.position }}</div>
           <div class="details">{{ member.detail }}</div>
@@ -13,17 +22,20 @@
         </div>
       </br-card>
     </div>
+    <router-view :key="route.fullPath"></router-view>
   </div>
 </template>
 
 <script setup lang="ts">
 import { BrCard } from "@brightly/brightlycomponents/brightlycomponents-vue/src";
 import { onMounted, ref } from "vue";
+import { useRoute } from "vue-router";
+const route = useRoute();
 
 onMounted(() => {
-  document.addEventListener('newMemberAddedToChristmasList', (event: any) => {
+  document.addEventListener("newMemberAddedToChristmasList", (event: any) => {
     console.log("Here is the added detail ", event.detail);
-    membersList.value.splice(0, 0, event.detail as memberType)
+    membersList.value.splice(0, 0, event.detail as memberType);
   });
 });
 
@@ -41,25 +53,27 @@ const dummyList: memberType[] = [
     email: "one@gmail.com",
     number: 1234567890,
     position: "SD 1",
-    detail: "Hi I like swimming and coding, I am a National level swimmer and blaa blaa blaa"
+    detail:
+      "Hi I like swimming and coding, I am a National level swimmer and blaa blaa blaa",
   },
   {
     name: "Doe",
     email: "two@gmail.com",
     number: 1234567890,
     position: "Software Engineer ||",
-    detail: "Hi I like swimming and coding, I am a National level swimmer and blaa blaa blaa"
+    detail:
+      "Hi I like swimming and coding, I am a National level swimmer and blaa blaa blaa",
   },
   {
     name: "Shawn",
     email: "three@gmail.com",
     number: 1234567890,
     position: "Product Manager",
-    detail: "Hi I like swimming and coding, I am a National level swimmer and blaa blaa blaa"
+    detail:
+      "Hi I like swimming and coding, I am a National level swimmer and blaa blaa blaa",
   },
 ];
 const membersList = ref(dummyList);
-
 </script>
 
 <style scoped>
@@ -100,6 +114,5 @@ const membersList = ref(dummyList);
   font-size: 11px;
   max-width: 300px;
   color: #124488;
-
 }
 </style>

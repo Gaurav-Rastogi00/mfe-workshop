@@ -1,16 +1,16 @@
 import { createRouter, createWebHistory } from "vue-router";
 import App from "../App.vue";
+import Details from "details/RemoteApp";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: "/Home",
-      name: "home",
-      component: App,
-      children: [{ path: ":title", name: "title", component: App }],
+      path: "/:id",
+      name: "Name",
+      component: Details,
+      props: true,
     },
-    { path: "/:pathMatch(.*)", component: NotFoundVue },
   ],
 });
 

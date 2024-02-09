@@ -12,7 +12,7 @@ export default defineConfig({
       exposes: {
         "./RemoteApp": "./src/components/ItemDetails.vue",
       },
-      shared: ["vue"],
+      shared: ["vue", "vue-router"],
     }),
   ],
   build: {

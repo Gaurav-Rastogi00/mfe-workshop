@@ -13,7 +13,7 @@ export default defineConfig({
         list: "http://localhost:4175/assets/remoteEntry.js",
         details: "http://localhost:4173/assets/remoteEntry.js",
       },
-      shared: ["vue"],
+      shared: ["vue", "vue-router"],
     }),
   ],
   build: {
