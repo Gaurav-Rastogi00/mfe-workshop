@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc && vite build",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@brightly/brightlycomponents": "^1.0.258",
     "vue": "^3.3.11",
     "vue-router": "4"
   },

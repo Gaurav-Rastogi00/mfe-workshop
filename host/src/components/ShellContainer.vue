@@ -1,18 +1,22 @@
 <template>
-  <!-- <nav>
-    <a href="/list"> Member's List</a>
-    <a href="/form"> Add New Member</a>
-  </nav> -->
-  <List @list-click="(data:{}) => getData(data)" />
-  <Form />
-  <Details :dataItem="details" v-if="details" />
+  <div class="shell">
+    <Navbar />
+    <div class="shell-container">
+      <div class="list-container">
+        <List @list-click="(data: {}) => getData(data)" />
+      </div>
+      <div class="form-container">
+        <Form />
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
 import List from "list/RemoteApp";
 import Form from "form/RemoteApp";
-import Details from "details/RemoteApp";
+import Navbar from "./Navbar.vue"
 
 const details = ref();
 
@@ -22,23 +26,35 @@ const getData = (data: {}) => {
 </script>
 
 <style>
-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
+.shell {
   width: 100vw;
-  box-sizing: border-box;
-  background-color: #ccebeb;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 40px;
-  padding: 20px 40px;
+  height: 100vh;
 }
 
-nav a {
-  cursor: pointer;
-  color: black;
+.shell-container {
+  box-sizing: border-box;
+  display: flex;
+  align-items: start;
+  margin: 0;
+}
+
+.list-container {
+  box-sizing: border-box;
+  width: 40%;
+  height: 90vh;
+  overflow-y: auto;
+  padding: 20px 20px 20px 40px;
+}
+
+.list-container::-webkit-scrollbar {
+  display: none;
+}
+
+.form-container {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 20px 20px 40px;
 }
 </style>
