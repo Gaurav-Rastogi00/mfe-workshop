@@ -41,7 +41,13 @@ const getData = (data: {}) => {
 .list-container {
   box-sizing: border-box;
   width: 40%;
+  height: 90vh;
+  overflow-y: auto;
   padding: 20px 20px 20px 40px;
+}
+
+.list-container::-webkit-scrollbar {
+  display: none;
 }
 
 .form-container {

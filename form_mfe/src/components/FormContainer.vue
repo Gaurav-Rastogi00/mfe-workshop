@@ -3,7 +3,7 @@
     <p class="form-heading">Add New Joinee</p>
     <input type="text" class="input-box" placeholder="Name" v-model="formData.name" />
     <input type="number" class="input-box" placeholder="+91 9999999999" v-model="formData.number" />
-    <input type="number" class="input-box" placeholder="Position" v-model="formData.position" />
+    <input type="text" class="input-box" placeholder="Position" v-model="formData.position" />
     <input type="email" class="input-box" placeholder="Email" v-model="formData.email" />
     <textarea class="input-box" placeholder="Likes dancing .." v-model="formData.detail" />
     <br-btn class="add-btn" @btnclick="handleSubmit()" :width="200"> <span slot="label">ADD EMPLOYEE </span></br-btn>

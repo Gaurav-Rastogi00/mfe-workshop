@@ -23,7 +23,7 @@ import { onMounted, ref } from "vue";
 onMounted(() => {
   document.addEventListener('newMemberAddedToChristmasList', (event: any) => {
     console.log("Here is the added detail ", event.detail);
-    membersList.value.push(event.detail as memberType)
+    membersList.value.splice(0, 0, event.detail as memberType)
   });
 });
 
